@@ -130,7 +130,7 @@
         /* Enhanced glow for the icon */
         .service-card:hover .bg-yellow-600 {
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-            background: linear-gradient(135deg, #ffd700, #d4af37);
+            background: #000000;
         }
 
         /* Text glow effect on hover */
@@ -254,64 +254,81 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-black text-white z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center">
-                    <img src="Images/logo.png" alt="Karhaus Logo" class="w-full h-full object-cover">
+        <!-- Navigation -->
+        <nav class="fixed w-full bg-black text-white z-50 shadow-lg">
+            <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gray-800 rounded-full flex items-center justify-center">
+                        <img src="Images/logo.png" alt="Karhaus Logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="ml-2 sm:ml-3 text-sm sm:text-lg md:text-xl font-bold text-white">KARHAUS DETAILING</span>
                 </div>
-                <span class="ml-3 text-xl font-bold text-gold-500 hidden md:block">KARHAUS DETAILING</span>
-            </div>
-            <div class="hidden md:flex space-x-8 cl-effect-5">
-                <a href="#home" class="text-gold-500">
-                    <span data-hover="Home">Home</span>
-                </a>
-                <a href="#services" class="text-white">
-                    <span data-hover="Services">Services</span>
-                </a>
-                <a href="#gallery" class="text-white">
-                    <span data-hover="Gallery">Gallery</span>
-                </a>
-                <a href="#about" class="text-white">
-                    <span data-hover="About">About</span>
-                </a>
-                <a href="#testimonials" class="text-white">
-                    <span data-hover="Testimonials">Testimonials</span>
-                </a>
-                <a href="#contact" class="text-white">
-                    <span data-hover="Contact">Contact</span>
-                </a>
-            </div>
-            <div class="md:hidden">
-                <button class="mobile-menu-button p-2 focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-                <!-- Mobile menu -->
-                <div class="mobile-menu hidden md:hidden bg-black pb-4 px-6 cl-effect-5">
-                    <a href="#home" class="block py-2 text-white">
-                        <span data-hover="Home">Home</span>
-                    </a>
-                    <a href="#services" class="block py-2 text-white">
-                        <span data-hover="Services">Services</span>
-                    </a>
-                    <a href="#gallery" class="block py-2 text-white">
-                        <span data-hover="Gallery">Gallery</span>
-                    </a>
-                    <a href="#about" class="block py-2 text-white">
-                        <span data-hover="About">About</span>
-                    </a>
-                    <a href="#testimonials" class="block py-2 text-white">
-                        <span data-hover="Testimonials">Testimonials</span>
-                    </a>
-                    <a href="#contact" class="block py-2 text-white">
-                        <span data-hover="Contact">Contact</span>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="flex space-x-8 cl-effect-5">
+                        <a href="#home" class="text-yellow-500">
+                            <span data-hover="Home">Home</span>
+                        </a>
+                        <a href="#services" class="text-white hover:text-yellow-500 transition-colors duration-300">
+                            <span data-hover="Services">Services</span>
+                        </a>
+                        <a href="#gallery" class="text-white hover:text-yellow-500 transition-colors duration-300">
+                            <span data-hover="Gallery">Gallery</span>
+                        </a>
+                        <a href="#about" class="text-white hover:text-yellow-500 transition-colors duration-300">
+                            <span data-hover="About">About</span>
+                        </a>
+                        <a href="#testimonials" class="text-white hover:text-yellow-500 transition-colors duration-300">
+                            <span data-hover="Testimonials">Testimonials</span>
+                        </a>
+                        <a href="#contact" class="text-white hover:text-yellow-500 transition-colors duration-300">
+                            <span data-hover="Contact">Contact</span>
+                        </a>
+                    </div>
+                    <a href="book-now.html" class="ml-6 bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        BOOK NOW
                     </a>
                 </div>
-    </nav>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars text-xl transition-transform duration-300"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="mobile-menu hidden md:hidden bg-black border-t border-gray-700 shadow-lg">
+                <div class="px-4 py-3 space-y-2">
+                    <a href="#home" class="flex items-center py-3 px-4 text-yellow-500 font-medium rounded-lg transition-all duration-300 hover:bg-gray-800">
+                        <i class="fas fa-home mr-3 w-5"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#services" class="flex items-center py-3 px-4 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-yellow-500">
+                        <i class="fas fa-cogs mr-3 w-5"></i>
+                        <span>Services</span>
+                    </a>
+                    <a href="#gallery" class="flex items-center py-3 px-4 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-yellow-500">
+                        <i class="fas fa-images mr-3 w-5"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="#about" class="flex items-center py-3 px-4 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-yellow-500">
+                        <i class="fas fa-info-circle mr-3 w-5"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="#testimonials" class="flex items-center py-3 px-4 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-yellow-500">
+                        <i class="fas fa-star mr-3 w-5"></i>
+                        <span>Testimonials</span>
+                    </a>
+                    <a href="#contact" class="flex items-center py-3 px-4 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-yellow-500">
+                        <i class="fas fa-envelope mr-3 w-5"></i>
+                        <span>Contact</span>
+                    </a>
+                    <div class="pt-2 mt-2 border-t border-gray-700">
+                        <a href="book-now.html" class="block mx-4 mb-2 bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 text-white font-bold py-3 px-6 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            BOOK NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
     <!-- Hero Section -->
     <section id="home" class="relative bg-black text-white h-screen flex items-center justify-center overflow-hidden">
@@ -811,13 +828,70 @@
     </div>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle with animation
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
+        const menuIcon = mobileMenuButton.querySelector('i');
         
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            
+            // Animate hamburger icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.style.transform = 'rotate(0deg)';
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+                menuIcon.style.transform = 'rotate(180deg)';
+            }
         });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.style.transform = 'rotate(0deg)';
+            });
+        });
+ 
         
         // Lightbox functionality
         const galleryItems = document.querySelectorAll('.gallery-item');
