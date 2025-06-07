@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karhaus Detailing | Atlanta's Premier Auto Detailing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .gallery-item:hover {
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Nav Link Slide Animation */
+        .cl-effect-5 a {
+            overflow: hidden;
+            padding: 0 4px;
+            height: 1.2em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cl-effect-5 a span {
+            position: relative;
+            display: inline-block;
+            -webkit-transition: -webkit-transform 0.3s;
+            -moz-transition: -moz-transform 0.3s;
+            transition: transform 0.3s;
+        }
+        
+        .cl-effect-5 a span::before {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            content: attr(data-hover);
+            font-weight: 700;
+            color: #FEC524;
+            white-space: nowrap;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+        
+        .cl-effect-5 a:hover span,
+        .cl-effect-5 a:focus span {
+            -webkit-transform: translateY(-100%);
+            -moz-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+        
+        .cl-effect-5 a:focus {
+            outline: none;
+        }
+
+        /* Gold Border and Glow Effect for Service Cards */
+        .service-card {
+            border: 2px solid #d4af37 !important;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #d4af37, #ffd700, #d4af37);
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 40px rgba(255, 215, 0, 0.3),
+                0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: #ffd700;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced glow for the icon */
+        .service-card:hover .bg-yellow-600 {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            background: linear-gradient(135deg, #ffd700, #d4af37);
+        }
+
+        /* Text glow effect on hover */
+        .service-card:hover h3 {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            color: #1f2937;
+        }
+        /* Gold Glow Effect for Gallery Images */
+        .gallery-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ffd700, #d4af37, #ffd700, #d4af37);
+            background-size: 400% 400%;
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: galleryGlow 3s ease infinite;
+            filter: blur(8px);
+        }
+
+        @keyframes galleryGlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.8;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 40px rgba(255, 215, 0, 0.3),
+                0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced glow for the search icon */
+        .gallery-item:hover .fas.fa-search-plus {
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border: 3px solid #ffd700;
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.4),
+                0 5px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+                /* About section image gold glow effect */
+                .about-image {
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .about-image:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                0 0 80px rgba(255, 215, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black text-white z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center">
+                    <img src="Images/logo.png" alt="Karhaus Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="ml-3 text-xl font-bold text-gold-500 hidden md:block">KARHAUS DETAILING</span>
+            </div>
+            <div class="hidden md:flex space-x-8 cl-effect-5">
+                <a href="#home" class="text-gold-500">
+                    <span data-hover="Home">Home</span>
+                </a>
+                <a href="#services" class="text-white">
+                    <span data-hover="Services">Services</span>
+                </a>
+                <a href="#gallery" class="text-white">
+                    <span data-hover="Gallery">Gallery</span>
+                </a>
+                <a href="#about" class="text-white">
+                    <span data-hover="About">About</span>
+                </a>
+                <a href="#testimonials" class="text-white">
+                    <span data-hover="Testimonials">Testimonials</span>
+                </a>
+                <a href="#contact" class="text-white">
+                    <span data-hover="Contact">Contact</span>
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button class="mobile-menu-button p-2 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+                <!-- Mobile menu -->
+                <div class="mobile-menu hidden md:hidden bg-black pb-4 px-6 cl-effect-5">
+                    <a href="#home" class="block py-2 text-white">
+                        <span data-hover="Home">Home</span>
+                    </a>
+                    <a href="#services" class="block py-2 text-white">
+                        <span data-hover="Services">Services</span>
+                    </a>
+                    <a href="#gallery" class="block py-2 text-white">
+                        <span data-hover="Gallery">Gallery</span>
+                    </a>
+                    <a href="#about" class="block py-2 text-white">
+                        <span data-hover="About">About</span>
+                    </a>
+                    <a href="#testimonials" class="block py-2 text-white">
+                        <span data-hover="Testimonials">Testimonials</span>
+                    </a>
+                    <a href="#contact" class="block py-2 text-white">
+                        <span data-hover="Contact">Contact</span>
+                    </a>
+                </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-black text-white h-screen flex items-center justify-center overflow-hidden">
+        <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+            <video autoplay muted loop class="w-full h-full object-cover opacity-70">
+                <source src="Images/hero-bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">ATLANTA'S PREMIER AUTO DETAILING STUDIO</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">High-end care for luxury and exotic vehicles</p>
+                <a href="book-now.html" class="inline-block bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    BOOK YOUR APPOINTMENT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">OUR SERVICES</h2>
+                <div class="w-20 h-1 bg-yellow-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Ceramic Coating</h3>
+                    <p class="text-gray-600">Premium ceramic coatings that provide long-lasting protection and extraordinary shine.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-spray-can text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Paint Correction</h3>
+                    <p class="text-gray-600">Restore your vehicle's paint to like-new condition by eliminating swirls and scratches.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-car text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Hand Car Wash</h3>
+                    <p class="text-gray-600">Gentle hand wash with premium products that safely clean without harming your finish.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-air-freshener text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Full Detailing</h3>
+                    <p class="text-gray-600">Complete interior and exterior detailing that brings your car back to showroom condition.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-car text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Tire Services</h3>
+                    <p class="text-gray-600">Professional tire maintenance including rotation, balancing, change, and repair.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-oil-can text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Oil Change</h3>
+                    <p class="text-gray-600">High-quality synthetic oil changes to keep your engine running smoothly.</p>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-shield-virus text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Paint Protection Film</h3>
+                    <p class="text-gray-600">Invisible self-healing film that protects your paint from chips, scratches, and road debris.</p>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card bg-gray-50 rounded-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-yellow-600 rounded-full flex items-center justify-center text-white transition-all duration-300">
+                        <i class="fas fa-star text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 transition-all duration-300">Premium Packages</h3>
+                    <p class="text-gray-600">Custom detailing packages tailored to your vehicle's specific needs.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="book-now.html" class="inline-block border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                    Book Your Appointment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20" style="background: linear-gradient(135deg, #ffd700, #d4af37, #b8860b, #daa520);">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">OUR WORK</h2>
+                <div class="w-20 h-1 bg-white mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img1.jpg" 
+                         alt="Detail Work 1" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img2.jpg" 
+                         alt="Detail Work 2" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img3.jpg" 
+                         alt="Detail Work 3" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img4.jpg" 
+                         alt="Detail Work 4" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img5.jpg" 
+                         alt="Detail Work 5" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md relative group">
+                    <img src="Images/img6.jpg" 
+                         alt="Detail Work 6" 
+                         class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-4xl transition-opacity duration-300"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://www.instagram.com/_karhaus_atl/" target="_blank" class="inline-block border-2 border-white text-white hover:bg-white hover:text-yellow-600 font-bold py-3 px-8 rounded-full transition-all duration-300">
+                    VIEW MORE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10">
+                    <img src="/Images/about.png" 
+                         alt="Karhaus Team" 
+                         class="about-image rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold text-black mb-6">WHO WE ARE</h2>
+                    <div class="w-20 h-1 bg-yellow-600 mb-6"></div>
+                    
+                    <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                        Karhaus Detailing is Atlanta's trusted name in premium auto detailing. We specialize in ceramic coatings, paint correction, and paint protection for luxury and exotic vehicles. Our team combines cutting-edge technology with time-honored techniques to deliver exceptional results.
+                    </p>
+                    
+                    <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                        With an unwavering commitment to excellence, every vehicle we service turns heads on the road. We treat every car with the same attention to detail, whether it's a daily driver or a prized collector's item.
+                    </p>
+                    
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-600"></i>
+                            <span>2642 Metropolitan Pkwy SW, Atlanta, Georgia 30315</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-yellow-600"></i>
+                            <span>+1 (240) 814-6069</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-yellow-600"></i>
+                            <span>Karhaus2015@gmail.com</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-yellow-600"></i>
+                            <span>Open Daily: 9:00 AM – 6:00 PM (Sunday: 10:00 AM – 6:00 PM)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="#contact" class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                            CONTACT US
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">CLIENT TESTIMONIALS</h2>
+                <div class="w-20 h-1 bg-yellow-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md relative transition-all duration-300">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-user text-2xl"></i>
+                    </div>
+                    <div class="text-center mt-8">
+                        <div class="flex justify-center mb-4">
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "Karhaus Detailing transformed my 5-year-old Porsche to look better than the day I bought it. Their ceramic coating package was worth every penny!"
+                        </p>
+                        <h4 class="font-bold text-black">- James R.</h4>
+                        <p class="text-gray-500 text-sm">Porsche 911 Owner</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md relative transition-all duration-300">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-user text-2xl"></i>
+                    </div>
+                    <div class="text-center mt-8">
+                        <div class="flex justify-center mb-4">
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "I've used many detailers in Atlanta, but Karhaus is in a league of their own. The attention to detail is incredible. My Ferrari has never looked better."
+                        </p>
+                        <h4 class="font-bold text-black">- Michael T.</h4>
+                        <p class="text-gray-500 text-sm">Ferrari 488 GTB Owner</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md relative transition-all duration-300">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-user text-2xl"></i>
+                    </div>
+                    <div class="text-center mt-8">
+                        <div class="flex justify-center mb-4">
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                            <i class="fas fa-star text-yellow-500 mx-1"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "The team at Karhaus took my heavily swirled Tesla and restored the paint to perfection. Their knowledge and professionalism are unmatched in Atlanta."
+                        </p>
+                        <h4 class="font-bold text-black">- Sarah K.</h4>
+                        <p class="text-gray-500 text-sm">Tesla Model S Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">GET IN TOUCH</h2>
+                <div class="w-20 h-1 bg-yellow-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <div class="bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-yellow-500">CONTACT INFORMATION</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4 text-yellow-600"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">ADDRESS</h4>
+                                    <p class="text-gray-400">2642 Metropolitan Pkwy SW, Atlanta, Georgia 30315</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-4 text-yellow-600"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">PHONE</h4>
+                                    <p class="text-gray-400">+1 (240) 814-6069</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-4 text-yellow-600"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">EMAIL</h4>
+                                    <p class="text-gray-400">Karhaus2015@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-clock mt-1 mr-4 text-yellow-600"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">BUSINESS HOURS</h4>
+                                    <p class="text-gray-400">Monday-Saturday: 9:00 AM – 6:00 PM</p>
+                                    <p class="text-gray-400">Sunday: 10:00 AM – 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4 text-yellow-500">FOLLOW US</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/_karhaus_atl/" class="w-10 h-10 bg-gray-800 hover:bg-yellow-600 rounded-full flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.google.com/maps/place/Karhaus/@33.6826179,-84.4099317,17z/data=!3m1!4b1!4m6!3m5!1s0x88f5029017bc8ed9:0x8770501bd5e51996!8m2!3d33.6826179!4d-84.4073568!16s%2Fg%2F11jr_fmpvw?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D" class="w-10 h-10 bg-gray-800 hover:bg-yellow-600 rounded-full flex items-center justify-center transition-all duration-300">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-900 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-yellow-500">SEND US A MESSAGE</h3>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-2 text-sm font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded focus:outline-none focus:border-yellow-600" placeholder="John Doe">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded focus:outline-none focus:border-yellow-600" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block mb-2 text-sm font-medium">Phone Number</label>
+                                <input type="text" id="phone" class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded focus:outline-none focus:border-yellow-600" placeholder="(123) 456-7890">
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block mb-2 text-sm font-medium">Service Interested In</label>
+                                <select id="service" class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded focus:outline-none focus:border-yellow-600">
+                                    <option selected disabled>Select a service</option>
+                                    <option>Ceramic Coating</option>
+                                    <option>Paint Correction</option>
+                                    <option>Hand Car Wash</option>
+                                    <option>Full Detailing</option>
+                                    <option>Tire Services</option>
+                                    <option>Oil Change</option>
+                                    <option>Paint Protection Film (PPF)</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block mb-2 text-sm font-medium">Your Message</label>
+                                <textarea id="message" rows="4" class="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded focus:outline-none focus:border-yellow-600" placeholder="Tell us about your vehicle and what services you're interested in..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded transition-all duration-300">
+                                SEND MESSAGE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mr-3">
+                            <img src="/Images/logo.png" alt="Karhaus Logo" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <span class="text-xl font-bold text-yellow-500">KARHAUS DETAILING</span>
+                    </div>
+                    <p class="mb-4">Atlanta's premier auto detailing studio specializing in luxury and exotic vehicles.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/_karhaus_atl/" class="text-gray-400 hover:text-yellow-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.google.com/maps/place/Karhaus/@33.6826179,-84.4099317,17z/data=!3m1!4b1!4m6!3m5!1s0x88f5029017bc8ed9:0x8770501bd5e51996!8m2!3d33.6826179!4d-84.4073568!16s%2Fg%2F11jr_fmpvw?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D" class="text-gray-400 hover:text-yellow-500 transition">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">QUICK LINKS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-yellow-500 transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-yellow-500 transition">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-yellow-500 transition">Gallery</a></li>
+                        <li><a href="#about" class="hover:text-yellow-500 transition">About Us</a></li>
+                        <li><a href="#testimonials" class="hover:text-yellow-500 transition">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-yellow-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">OUR SERVICES</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-500 transition">Ceramic Coating</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Paint Correction</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Full Detailing</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Tire Services</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Paint Protection Film</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Oil Change</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">CONTACT INFO</h3>
+                    <address class="not-italic space-y-2">
+                        <p><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i> 2642 Metropolitan Pkwy SW</p>
+                        <p class="ml-6">Atlanta, Georgia 30315</p>
+                        <p><i class="fas fa-phone-alt mr-2 text-yellow-500"></i> +1 (240) 814-6069</p>
+                        <p><i class="fas fa-envelope mr-2 text-yellow-500"></i> Karhaus2015@gmail.com</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p>&copy; 2025 Karhaus Detailing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <div class="relative w-full max-w-6xl mx-4">
+            <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl z-10 hover:text-yellow-500 transition">
+                &times;
+            </button>
+            <img id="lightbox-image" src="" alt="" class="w-full max-h-screen object-contain">
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeLightbox = document.getElementById('close-lightbox');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const img = item.querySelector('img');
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeLightbox.addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
+     
